@@ -20,6 +20,8 @@
   <!-- schema定义 -->
   <schema name="dbtest" dataNode="dnTest1">
     <table name="tb2" dataNode="dnTest2,dnTest3" rule="rule1" />
+      <!-- 正则支持，需要包含[] -->
+    <table name="tb_2012_[0-9]{1,2}" dataNode="dnTest2,dnTest3" rule="rule1" />
   </schema>
 
   <!-- 数据节点定义，数据节点由数据源和其他一些参数组织而成。-->

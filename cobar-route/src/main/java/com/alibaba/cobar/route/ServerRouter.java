@@ -30,6 +30,10 @@ import java.util.Map.Entry;
 import java.util.NoSuchElementException;
 import java.util.Set;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import com.alibaba.cobar.route.util.RegexUtil;
 import org.apache.log4j.Logger;
 
 import com.alibaba.cobar.parser.ast.ASTNode;
@@ -127,7 +131,11 @@ public final class ServerRouter {
         Map<String, TableConfig> tables = schema.getTables();
         ft: for (Entry<String, Map<String, List<Object>>> e : astExt.entrySet()) {
             Map<String, List<Object>> col2Val = e.getValue();
-            TableConfig tc = tables.get(e.getKey());
+
+            // 增加正则支持
+            // TableConfig tc = tables.get(e.getKey());
+            TableConfig tc = RegexUtil.get(tables, e.getKey());
+
             if (tc == null) {
                 continue;
             }

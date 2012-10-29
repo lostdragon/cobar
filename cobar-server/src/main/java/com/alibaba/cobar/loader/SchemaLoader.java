@@ -272,15 +272,16 @@ public final class SchemaLoader {
                 ruleRequired = Boolean.parseBoolean(tableElement.getAttribute("ruleRequired"));
             }
 
-            String[] tableNames = SplitUtil.split(name, ',', true);
-            for (String tableName : tableNames) {
-                TableConfig table = new TableConfig(tableName, dataNode, tableRule, ruleRequired);
-                checkDataNodeExists(table.getDataNodes());
-                if (tables.containsKey(table.getName())) {
-                    throw new ConfigException("table " + tableName + " duplicated!");
-                }
-                tables.put(table.getName(), table);
+            // 移除 , 分割表
+            //String[] tableNames = SplitUtil.split(name, ',', true);
+            //for (String tableName : tableNames) {
+            TableConfig table = new TableConfig(name, dataNode, tableRule, ruleRequired);
+            checkDataNodeExists(table.getDataNodes());
+            if (tables.containsKey(table.getName())) {
+                throw new ConfigException("table " + name + " duplicated!");
             }
+            tables.put(table.getName(), table);
+            //}
         }
         return tables;
     }

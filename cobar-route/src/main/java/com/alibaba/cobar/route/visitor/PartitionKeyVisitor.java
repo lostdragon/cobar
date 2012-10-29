@@ -148,6 +148,7 @@ import com.alibaba.cobar.parser.util.ExprEvalUtils;
 import com.alibaba.cobar.parser.util.Pair;
 import com.alibaba.cobar.parser.visitor.SQLASTVisitor;
 import com.alibaba.cobar.route.config.TableConfig;
+import com.alibaba.cobar.route.util.RegexUtil;
 import com.alibaba.cobar.util.SmallSet;
 
 /**
@@ -397,7 +398,9 @@ public final class PartitionKeyVisitor implements SQLASTVisitor {
         if (tableNameUp == null) {
             return false;
         }
-        TableConfig config = tablesRuleConfig.get(tableNameUp);
+        // 增加正则支持
+        // TableConfig config = tablesRuleConfig.get(tableNameUp);
+        TableConfig config = RegexUtil.get(tablesRuleConfig, tableNameUp);
         if (config != null) {
             return config.existsColumn(columnNameUp);
         }

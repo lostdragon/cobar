@@ -35,7 +35,7 @@ fi
 #==============================================================================
 
 #set JAVA_OPTS
-JAVA_OPTS="-server -Xms1024m -Xmx1024m -Xmn256m -Xss128k"
+JAVA_OPTS="-server -Xms1024m -Xmx1024m -Xmn256m -Xss256k"
 #performance Options
 JAVA_OPTS="$JAVA_OPTS -XX:+AggressiveOpts"
 JAVA_OPTS="$JAVA_OPTS -XX:+UseBiasedLocking"
