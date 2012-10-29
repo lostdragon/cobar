@@ -17,18 +17,29 @@
 <!DOCTYPE cobar:rule SYSTEM "rule.dtd">
 <cobar:rule xmlns:cobar="http://cobar.alibaba.com/">
 
-  <!-- 路由规则定义，定义什么表，什么字段，采用什么路由算法 -->
-  <tableRule name="rule1">
-    <rule>
-      <columns>id</columns>
-      <algorithm><![CDATA[ func1(${id}) ]]></algorithm>
-    </rule>
-  </tableRule>
+    <!-- 路由规则定义，定义什么表，什么字段，采用什么路由算法 -->
+    <tableRule name="rule1">
+        <rule>
+            <columns>id</columns>
+            <algorithm><![CDATA[ func1(${id}) ]]></algorithm>
+        </rule>
+    </tableRule>
 
-  <!-- 路由函数定义 -->
-  <function name="func1" class="com.alibaba.cobar.route.function.PartitionByLong">
-    <property name="partitionCount">2</property>
-    <property name="partitionLength">512</property>
-  </function>
+    <tableRule name="rule2">
+        <rule>
+            <columns>id</columns>
+            <algorithm><![CDATA[ func2(${id}) ]]></algorithm>
+        </rule>
+    </tableRule>
 
+    <!-- 路由函数定义 -->
+    <function name="func1" class="com.alibaba.cobar.route.function.PartitionByLong">
+        <property name="partitionCount">2</property>
+        <property name="partitionLength">512</property>
+    </function>
+
+    <!-- 根据ID取模 -->
+    <function name="func2" class="com.alibaba.cobar.route.function.PartitionByMod">
+        <property name="partitionCount">2</property>
+    </function>
 </cobar:rule>

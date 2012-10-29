@@ -30,9 +30,6 @@ import java.util.Map.Entry;
 import java.util.NoSuchElementException;
 import java.util.Set;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import com.alibaba.cobar.route.util.RegexUtil;
 import org.apache.log4j.Logger;
 

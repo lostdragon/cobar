@@ -30,17 +30,25 @@
   </properties>
 
   <repositories>
+    <!--<repository>-->
+      <!--<id>alibaba</id>-->
+      <!--<name>alibaba</name>-->
+      <!--<url>http://code.alibabatech.com/mvn/releases/</url>-->
+      <!--<layout>default</layout>-->
+    <!--</repository>-->
+
     <repository>
-      <id>alibaba</id>
-      <name>alibaba</name>
-      <url>http://code.alibabatech.com/mvn/releases/</url>
-      <layout>default</layout>
+        <id>project.local</id>
+        <name>project</name>
+        <url>file:${project.basedir}/../repo</url>
     </repository>
   </repositories>
+
+
   <distributionManagement>
     <repository>
       <id>distribute-repository</id>
-      <url>file:///opt/cobar-test</url>
+      <url>file:///${project.basedir}/../repo</url>
     </repository>
   </distributionManagement>
   <issueManagement>
