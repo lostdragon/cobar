@@ -1,0 +1,16 @@
+Package Contents:
+  README  ---------------- this file
+  LICENSE  --------------- license file
+  bin  ------------------- executable script directory
+  conf  ------------------ configuration files directory
+  lib  ------------------- library files directory
+  logs  ------------------ log files directory
+
+Requirements env:
+  JDK6.0 or later
+
+startup server:
+./bin/startup.sh
+
+shutdown server:
+./bin/shutdown.sh
